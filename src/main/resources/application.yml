@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: loanapp
+  
+  profiles:
+    active: dev
+  
+server:
+  port: 8080
+  servlet:
+    context-path: /api/loans
+
+logging:
+  level:
+    root: INFO
+    com.pragma.loanapp: DEBUG
+    org.springframework.web: INFO
+    org.hibernate: ERROR
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+loanapp:
+  evaluation:
+    risk-thresholds:
+      high: 0.7
+      medium: 0.4
+  calculation:
+    default-interest-rate: 0.05
+    max-loan-amount: 1000000
+    min-loan-term-months: 6
+    max-loan-term-months: 120
